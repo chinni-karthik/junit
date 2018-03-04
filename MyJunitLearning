@@ -1,0 +1,10 @@
+Learning:-
+1-create any class and right click on it and select create unit test for it.
+2-follow the naming convention as class name followed by Test.
+3-create as many test methods as you want in the test class(not recommended though).
+4-every test method should have @Test annotation.
+5-follow the naming convention for the test method as testClassName_ConditionName.
+6-make sure that the method is public void. public as a framework has to call your test method, void as the framework expects.
+7-Make sure that you do not have duplicate code like initializing reference variable of the class you are testing. Write that variable on top of every test method.
+ #End of Part ONE at 34 mins#
+--------------------------------------------------------------------------------------   
