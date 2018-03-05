@@ -8,3 +8,82 @@ Learning:-
 7-Make sure that you do not have duplicate code like initializing reference variable of the class you are testing. Write that variable on top of every test method.
  #End of Part ONE at 34 mins#
 --------------------------------------------------------------------------------------   
+assertEquals()
+assertFalse()
+assertTrue()
+assertNull()
+assertNotNull()
+--------------------------------------------------------------------------------------
+@Before-->>once per test
+@After
+@BeforeClass-->>once per class-->>method should be public static void.
+@AfterClass
+--------------------------------------------------------------------------------------
+assertArrayEquals()
+
+@Test(expected=NullPointerException.class)
+@Test(timeout=100)	
+--------------------------------------------------------------------------------------
+Interview Questions:-
+---------------------
+TestSuit:-
+----------
+The test suit allows us to group multiple test cases so that it can be run together. 
+TestSuit is the container class under junit.framework.TestSuite package.
+
+TestRunner:-
+------------
+Used to execute test cases.
+
+Why not use main() to test?
+---------------------------
+* Your classes will be cluttered with test code in main method. All those test codes will be packaged into the final product.
+* If you have a lots of classes to test, you need to run the main() method of every class. This requires some extra coding effort.
+* If you want the test results to be displayed in a GUI, you will have to write code for that GUI.
+* If you want to log the results of tests in HTML format or text format, you will have to write additional code.
+* If one method call fails, next method calls won't be executed. You will have to work-around this.
+
+Lifecycle of JUnit4
+-------------------
+@Before
+@Test XXX1
+@After
+
+@Before
+@Test XXX2
+@After
+
+Testing private method:
+-----------------------
+
+When a method is declared as \"private\", it can only be accessed within the same class. So there is no way to test a \"private\" method of a target class from any test class.
+
+To resolve this problem, you have to perform unit testing manually. Or you have to change your method from \"private\" to \"protected\".
+
+Or if it is not possible to convert any of the above ways, you can test private method by using PowerMock partialMock.
+
+Testing protected method:
+-----------------------
+define the test method in the same package as the target class.
+
+If the method returns nothing, how to test it?
+----------------------------------------------
+You need to follow the below logics:
+
+* If a method is not returning anything through the \"return\" statement (void method), it may return data through its arguments. In this case, you can test the data returned in any argument.
+* Else if a method is not returning any data through its arguments, it may change values of its instance variables. In this case, you can test changes of any instance variables.
+* Else if a method is not changing any instance variable, it may change values of its class variables. In this case, you can test changes of any class variables.
+* Else if a method is not changing any class variable, it may change external resources. In this case, you can test changes of any external resources.
+* Else if a method is not changing any external resources, it may just doing nothing but holding the thread in a waiting status. In this case, you can test this waiting condition.
+* Else if a method is not holding the thread in waiting status, then this method is really doing nothing. In this case, there is no need to test this method!
+
+Why do people import Assert statically?
+---------------------------------------
+to save the code length. like, in normal import, Assert.assertEquals(), if imported statically, assertEquals().
+
+if we can debug the code, why JUnit is required?
+-----------------------------------------------
+Debugging is a manual process and we need to dig into the code to inspect how the variables are getting changed in rutime.
+This is a tedious process.
+Every time we change the code, we need to go to debugger and ensure that nothing is broken! 
+
